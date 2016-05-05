@@ -7,14 +7,19 @@ import javax.swing.JFrame;
  */
 public class ScheduleGUI extends JFrame
 {
+    private Schedule schedule;
     public ScheduleGUI(String name){
         super(name);
     }
     public static void run(){
         ScheduleGUI frame=new ScheduleGUI("Schdule Manager");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//Close on Exit
+        frame.initComponents();
         //Display the GUI
         frame.pack();
         frame.setVisible(true);
+    }
+    private void initComponents(){
+        ;
     }
 }
