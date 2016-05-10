@@ -9,7 +9,7 @@ public class ScheduleManager
 {
     static ScheduleGUI gui;
     public static void main(String[] args){
-        gui.run();
+        javax.swing.SwingUtilities.invokeLater(new Runnable(){public void run(){gui.run();}});
     }
     
 }

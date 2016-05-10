@@ -1,6 +1,6 @@
-
+import java.util.Calendar;
 /**
- * Write a description of class Schedule here.
+ * Write a description of class Event here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
@@ -11,23 +11,10 @@ public class Schedule
     private int x;
 
     /**
-     * Constructor for objects of class Schedule
+     * Constructor for objects of class Event
      */
-    public Schedule()
+    public Schedule(Calendar start,Calendar stop,boolean hasReminder)
     {
-        // initialise instance variables
-        x = 0;
-    }
-
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+        
     }
 }
