@@ -8,8 +8,6 @@ import java.util.Calendar;
 public class Schedule
 {
     // instance variables - replace the example below with your own
-    private int x;
-
     /**
      * Constructor for objects of class Event
      */
@@ -17,4 +15,5 @@ public class Schedule
     {
         
     }
+    
 }

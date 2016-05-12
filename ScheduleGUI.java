@@ -5,7 +5,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-
+import java.awt.BorderLayout;
 /**
  * Write a description of class ScheduleGUI here.
  * 
@@ -14,27 +14,33 @@ import javax.swing.JTextField;
  */
 public class ScheduleGUI extends JFrame
 {
-    private Schedule schedule;
+    private MySchedule schedule;
     private JButton newTask,newEvent,confirm;
     private JMenuBar menuBar;
-    private JTextField etName,etStart;//et= event/task
-    
+    private JTextField teName,teStart;//te= event/task
+    private JPanel teButtons;
     public ScheduleGUI(String name){
         super(name);
     }
+    
     public static void run(){
         ScheduleGUI frame=new ScheduleGUI("Schdule Manager");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//Close on Exit
+        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);//Prompt before quitting...
         frame.initComponents();
         //Display the GUI
         frame.pack();
         frame.setVisible(true);
     }
     private void initComponents(){
+        menuBar=new JMenuBar();
         newTask=new JButton("New Task");
-        newEvent=new JButton("New Event");
         newTask.setToolTipText("Create a new task.");
+        newEvent=new JButton("New Event");
         newEvent.setToolTipText("Create a new event.");
+        teButtons=new JPanel();
+        teButtons.add(newTask);//Add newTask to teButtons
+        teButtons.add(newEvent);//Add newEvent to teButtons
+        getContentPane().add(teButtons,BorderLayout.PAGE_END);//Add teButtons
         
     }
 }

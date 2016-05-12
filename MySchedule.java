@@ -1,4 +1,5 @@
 import java.util.Calendar;
+import java.util.Date;
 /**
  * Write a description of class Schedule here.
  * 
@@ -16,6 +17,9 @@ public class MySchedule
     public MySchedule(){
         cal=cal.getInstance();
         
+    }
+    public Date getDate(){
+        return cal.getTime();
     }
     
 }
