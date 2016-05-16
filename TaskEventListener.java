@@ -7,7 +7,16 @@ import java.awt.event.*;
  */
 public class TaskEventListener implements ActionListener
 {
+    
     public void actionPerformed(ActionEvent ae){
-        System.out.println(ae.getSource());
+        
+        if(ae.getActionCommand().equals("New Task")){
+            ScheduleGUI.newTaskEvent(1);
+        }
+        if(ae.getActionCommand().equals("New Event")){
+            ScheduleGUI.newTaskEvent(2);
+        }
+        
     }
+    
 }
