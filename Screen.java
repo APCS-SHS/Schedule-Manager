@@ -8,6 +8,8 @@ public class Screen extends Applet implements ActionListener
     private int selection;
     private Button button1;
     private Button button2;
+    private String day;
+    private int x;
 
     public void init()
     {
@@ -18,6 +20,8 @@ public class Screen extends Applet implements ActionListener
         button2 = new Button("AM/PM");
         add(button2);
         button2.addActionListener(this);
+        day = "";
+        x = 0;
     }
 
     public void actionPerformed(ActionEvent ae)
@@ -32,15 +36,32 @@ public class Screen extends Applet implements ActionListener
 
     public void paint(Graphics g)
     {
+        int w=getWidth();
+        int h=getHeight();
+        
         //buttons
         if(selection == 1)
             armyTime(g);
         else if(selection == 2)
             ampm(g);
-
-        int w=getWidth();
-        int h=getHeight();
-
+  
+        //day
+        if(day == "Sunday")
+            x = w/2-233;
+        if(day == "Monday")
+            x = w/2-166;
+        if(day == "Tuesday")
+            x = w/2-103;
+        if(day == "Wednesday")
+            x = w/2-30;
+        if(day == "Thursday")
+            x = w/2+48;
+        if(day == "Friday")
+            x = w/2+110;
+        if(day == "Saturday")
+            x = w/2+177;
+        
+        //setup
         setBackground(Color.white);
         
         g.setColor(Color.black);
@@ -69,12 +90,17 @@ public class Screen extends Applet implements ActionListener
         g.drawLine(w/2+37, h/2-208, w/2+37, h/2+250);
         g.drawLine(w/2+108, h/2-208, w/2+108, h/2+250);
         g.drawLine(w/2+160, h/2-208, w/2+160, h/2+250);
+        
+        //square
+        g.setColor(Color.red);
+        g.fillRect(427, 63, 50, 15);
 
     }
-    public void busySquare(Graphics g)
+    
+    public void busySquare(Graphics g, int x)
     {
         g.setColor(Color.red);
-        g.fillRect(10, 65, 50, 15);
+        g.fillRect(x, 65, 50, 15);
     }
 
     public void armyTime(Graphics g)
@@ -113,7 +139,7 @@ public class Screen extends Applet implements ActionListener
         int w=getWidth();
         int h=getHeight();
         g.setColor(Color.black);
-        g.drawString("12", w/2-258, h/2-173);
+        g.drawString("AM 12", w/2-282, h/2-173);
         g.drawString("1", w/2-251, h/2-155);
         g.drawString("2", w/2-251, h/2-137);
         g.drawString("3", w/2-251, h/2-119);
@@ -125,7 +151,7 @@ public class Screen extends Applet implements ActionListener
         g.drawString("9", w/2-251, h/2-11);
         g.drawString("10", w/2-258, h/2+7);
         g.drawString("11", w/2-258, h/2+25);
-        g.drawString("12", w/2-258, h/2+43);
+        g.drawString("PM 12", w/2-281, h/2+43);
         g.drawString("1", w/2-251, h/2+61);
         g.drawString("2", w/2-251, h/2+79);
         g.drawString("3", w/2-251, h/2+97);
