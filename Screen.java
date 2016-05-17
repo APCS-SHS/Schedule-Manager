@@ -2,14 +2,16 @@ import java.awt.*;
 //import javax.swing.*;
 import java.awt.event.*;
 import java.applet.Applet;
+import java.util.*;
 
-public class Screen extends Applet implements ActionListener
+public class Screen extends Applet implements ActionListener//,MouseListener
 {
     private int selection;
     private Button button1;
     private Button button2;
     private String day;
-    private int x;
+    private int x=0;
+    private int y=0;
 
     public void init()
     {
@@ -22,6 +24,7 @@ public class Screen extends Applet implements ActionListener
         button2.addActionListener(this);
         day = "";
         x = 0;
+        //addMouseListener(this);
     }
 
     public void actionPerformed(ActionEvent ae)
@@ -44,28 +47,14 @@ public class Screen extends Applet implements ActionListener
             armyTime(g);
         else if(selection == 2)
             ampm(g);
-  
-        //day
-        if(day == "Sunday")
-            x = w/2-233;
-        if(day == "Monday")
-            x = w/2-166;
-        if(day == "Tuesday")
-            x = w/2-103;
-        if(day == "Wednesday")
-            x = w/2-30;
-        if(day == "Thursday")
-            x = w/2+48;
-        if(day == "Friday")
-            x = w/2+110;
-        if(day == "Saturday")
-            x = w/2+177;
         
+            
         //setup
         setBackground(Color.white);
         
         g.setColor(Color.black);
         g.drawString("Schedule Manager", w/2-45, h/2-230);
+        
         //days
         g.setColor(ColorLibKhavkhalyuk.PINKak());
         g.drawString("Sunday", w/2-225, h/2-200);
@@ -81,6 +70,7 @@ public class Screen extends Applet implements ActionListener
         g.drawString("Friday", w/2+115, h/2-200);
         g.setColor(ColorLibKhavkhalyuk.PURPLEak());
         g.drawString("Saturday", w/2+165, h/2-200);
+        
         //lines
         g.setColor(Color.black);
         g.drawLine(w/2-240, h/2-190, w/2+240, h/2-190);
@@ -91,16 +81,27 @@ public class Screen extends Applet implements ActionListener
         g.drawLine(w/2+108, h/2-208, w/2+108, h/2+250);
         g.drawLine(w/2+160, h/2-208, w/2+160, h/2+250);
         
+        //mouse
+        if(y > h/2-208 && y < h/2-190)
+        {
+        }
+        
         //square
         g.setColor(Color.red);
         g.fillRect(427, 63, 50, 15);
 
     }
     
-    public void busySquare(Graphics g, int x)
+    public void mouseClicked(MouseEvent me)
     {
-        g.setColor(Color.red);
-        g.fillRect(x, 65, 50, 15);
+        x=me.getX();
+        y=me.getY();
+        repaint();
+    }
+    
+    public void square(Graphics g, int x)
+    {
+        
     }
 
     public void armyTime(Graphics g)
