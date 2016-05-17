@@ -11,10 +11,10 @@ public class TaskEventListener implements ActionListener
     public void actionPerformed(ActionEvent ae){
         
         if(ae.getActionCommand().equals("New Task")){
-            ScheduleGUI.newTaskEvent(1);
+            ScheduleGUI.newTaskEvent(0);
         }
         if(ae.getActionCommand().equals("New Event")){
-            ScheduleGUI.newTaskEvent(2);
+            ScheduleGUI.newTaskEvent(1);
         }
         
     }

@@ -8,7 +8,7 @@
 public class Event
 {
     private String name;
-    public Event(String eventName,Schedule start,Schedule stop, boolean repeats){
+    public Event(String eventName,Schedule eventSchedule, boolean repeats){
         name=eventName;
     }
 }

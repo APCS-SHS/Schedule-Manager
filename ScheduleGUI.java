@@ -22,6 +22,7 @@ public class ScheduleGUI extends JFrame
     private JTextField teName,teStart;//te= event/task
     private JPanel teButtons,tForm,eForm;
     private TaskEventListener teListener=new TaskEventListener();
+    
     public ScheduleGUI(String name){
         super(name);
     }
@@ -32,6 +33,7 @@ public class ScheduleGUI extends JFrame
         frame.initMenuBar();//Create Menu Bar
         frame.setJMenuBar(menuBar);//Add Menu Bar
         frame.createNewTaskEventButtons();//Create and Add Buttons
+        
         //Display the GUI
         frame.pack();
         frame.setVisible(true);
@@ -48,7 +50,6 @@ public class ScheduleGUI extends JFrame
         menuBar.add(teNew);
         
     }
-    
     private void createNewTaskEventButtons(){
         newTask=new JButton("New Task");
         newTask.setToolTipText("Create a new task.");
@@ -58,13 +59,20 @@ public class ScheduleGUI extends JFrame
         newEvent.addActionListener(teListener);
         teButtons=new JPanel();
         teButtons.add(newTask);//Add newTask to teButtons
-        
         teButtons.add(newEvent);//Add newEvent to teButtons
         getContentPane().add(teButtons,BorderLayout.PAGE_END);//Add teButtons
         
     }
-    public static void newTaskEvent(int TaskEvent){
-        //
+    public static void newTaskEvent(int taskEvent){
+        if(taskEvent==0){
+            
+            
+        }
+        if(taskEvent==1){
+            
+        }
     }
+    
+    
     
 }

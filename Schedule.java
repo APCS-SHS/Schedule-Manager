@@ -11,9 +11,14 @@ public class Schedule
     /**
      * Constructor for objects of class Event
      */
-    public Schedule(Calendar start,Calendar stop,boolean hasReminder)
+    public Schedule(Calendar start,Calendar stop)
     {
         
     }
+    public Schedule(Calendar start,Calendar stop, boolean repeats)
+    {
+        
+    }
+    
     
 }

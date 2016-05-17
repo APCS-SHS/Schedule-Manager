@@ -1,5 +1,6 @@
 import java.util.Calendar;
 import java.util.Date;
+import java.util.ArrayList;
 /**
  * Write a description of class Schedule here.
  * 
@@ -12,8 +13,8 @@ public class MySchedule
     private int day;
     private int year;
     private Calendar cal;
-    private Task[] tasks;
-    private Event[] events;
+    private ArrayList<Task> tasks=new ArrayList<Task>();
+    private ArrayList<Event> events=new ArrayList<Event>();
     public MySchedule(){
         cal=cal.getInstance();
         
@@ -21,5 +22,16 @@ public class MySchedule
     public Date getDate(){
         return cal.getTime();
     }
-    
+    public void addTask(Task t){
+        tasks.add(t);
+    }
+    public void addEvent(Event e){
+        events.add(e);
+    }
+    public ArrayList<Task> getTasks(){
+        return tasks;
+    }
+    public ArrayList<Event> getEvents(){
+        return events;
+    }
 }
