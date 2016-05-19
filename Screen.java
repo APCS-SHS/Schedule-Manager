@@ -4,7 +4,7 @@ import java.awt.event.*;
 import java.applet.Applet;
 import java.util.*;
 
-public class Screen extends Applet implements ActionListener//,MouseListener
+public class Screen extends Applet implements ActionListener,MouseListener
 {
     private int selection;
     private Button button1;
@@ -24,7 +24,30 @@ public class Screen extends Applet implements ActionListener//,MouseListener
         button2.addActionListener(this);
         day = "";
         x = 0;
-        //addMouseListener(this);
+        addMouseListener(this);
+    }
+
+    public void mouseExited(MouseEvent me)
+    {
+    }
+
+    public void mouseEntered(MouseEvent me)
+    {
+    }
+
+    public void mouseReleased(MouseEvent me)
+    {
+    }
+
+    public void mousePressed(MouseEvent me)
+    {
+    }
+
+    public void mouseClicked(MouseEvent me)
+    {
+        x=me.getX();
+        y=me.getY();
+        repaint();
     }
 
     public void actionPerformed(ActionEvent ae)
@@ -80,7 +103,7 @@ public class Screen extends Applet implements ActionListener//,MouseListener
         g.drawLine(w/2+108, h/2-208, w/2+108, h/2+250);
         g.drawLine(w/2+160, h/2-208, w/2+160, h/2+250);
 
-        //mouse
+        //day of the week
         if(y > h/2-208 && y < h/2-190)
         {
             if(x > w/2-240 && x < w/2-172) //sunday
@@ -133,20 +156,11 @@ public class Screen extends Applet implements ActionListener//,MouseListener
         }
 
         //square
-        //g.setColor(Color.red);
-        //g.fillRect(427, 63, 50, 15);
-
-    }
-
-    public void mouseClicked(MouseEvent me)
-    {
-        x=me.getX();
-        y=me.getY();
-        repaint();
-    }
-
-    public void square(Graphics g, int x)
-    {
+        if(x > w/2-260 && x < w/2-250)
+        {
+            g.setColor(Color.red);
+            //g.fillRect(427, 63, 50, 15);
+        }
 
     }
 
@@ -211,4 +225,10 @@ public class Screen extends Applet implements ActionListener//,MouseListener
         g.drawString("10", w/2-258, h/2+223);
         g.drawString("11", w/2-258, h/2+241);
     }
+
+    public void square(Graphics g, int x)
+    {
+
+    }
+
 }
