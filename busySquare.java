@@ -1,5 +1,5 @@
 import java.util.*;
-public class busySquare extends Screen
+public class busySquare
 {
     private boolean busy;
     private String day;
@@ -11,7 +11,7 @@ public class busySquare extends Screen
         x = 0;
     }
 
-    public int sampleMethod(int y)
+    public int day()
     {
         if (busy == true)
         {
