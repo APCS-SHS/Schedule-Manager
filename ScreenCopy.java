@@ -4,7 +4,7 @@ import java.awt.event.*;
 import java.applet.Applet;
 import java.util.*;
 
-public class Screen extends Applet implements ActionListener,MouseListener
+public class ScreenCopy extends Applet implements ActionListener,MouseListener
 {
     private int selection;
     private Button button1;
@@ -12,6 +12,8 @@ public class Screen extends Applet implements ActionListener,MouseListener
     private String day;
     private int x=0;
     private int y=0;
+    private int xr=0;
+    private int yr=0;
 
     public void init()
     {
@@ -111,6 +113,7 @@ public class Screen extends Applet implements ActionListener,MouseListener
                 g.setColor(Color.red);
                 g.drawLine(w/2-240, h/2-190, w/2-172, h/2-190);
                 g.drawLine(w/2-172, h/2-208, w/2-172, h/2+250);
+                xr = w/2-233;
             }
             else if(x > w/2-172 && x< w/2-110) //monday
             {
@@ -118,6 +121,7 @@ public class Screen extends Applet implements ActionListener,MouseListener
                 g.drawLine(w/2-172, h/2-190, w/2-110, h/2-190);
                 g.drawLine(w/2-172, h/2-208, w/2-172, h/2+250);
                 g.drawLine(w/2-110, h/2-208, w/2-110, h/2+250);
+                xr = w/2-166;
             }
             else if(x > w/2-110 && x < w/2-47) //tuesday
             {
@@ -125,6 +129,7 @@ public class Screen extends Applet implements ActionListener,MouseListener
                 g.drawLine(w/2-110, h/2-190, w/2-47, h/2-190);
                 g.drawLine(w/2-110, h/2-208, w/2-110, h/2+250);
                 g.drawLine(w/2-47, h/2-208, w/2-47, h/2+250);
+                xr = w/2-103;
             }
             else if(x > w/2-47 && x < w/2+37) //wednesday
             {
@@ -132,6 +137,7 @@ public class Screen extends Applet implements ActionListener,MouseListener
                 g.drawLine(w/2-47, h/2-190, w/2+37, h/2-190);
                 g.drawLine(w/2-47, h/2-208, w/2-47, h/2+250);
                 g.drawLine(w/2+37, h/2-208, w/2+37, h/2+250);
+                xr = w/2-30;
             }
             else if(x > w/2+37 && x < w/2+108) //thursday
             {
@@ -139,6 +145,7 @@ public class Screen extends Applet implements ActionListener,MouseListener
                 g.drawLine(w/2+37, h/2-190, w/2+108, h/2-190);
                 g.drawLine(w/2+37, h/2-208, w/2+37, h/2+250);
                 g.drawLine(w/2+108, h/2-208, w/2+108, h/2+250);
+                xr = w/2+48;
             }
             else if(x > w/2+108 && x < w/2+160) //friday
             {
@@ -146,14 +153,117 @@ public class Screen extends Applet implements ActionListener,MouseListener
                 g.drawLine(w/2+108, h/2-190, w/2+160, h/2-190);
                 g.drawLine(w/2+108, h/2-208, w/2+108, h/2+250);
                 g.drawLine(w/2+160, h/2-208, w/2+160, h/2+250);
+                xr = w/2+110;
             }
             else if(x > w/2+160 && x < w/2+240) //saturday
             {
                 g.setColor(Color.red);
                 g.drawLine(w/2+160, h/2-190, w/2+240, h/2-190);
                 g.drawLine(w/2+160, h/2-208, w/2+160, h/2+250);
+                xr = w/2+177;
             }
         }
+
+        //square
+        if(x > w/2-285 && x < w/2-250)
+        {
+            if(y > h/2-173 && y < h/2-155)
+            {
+                yr = h/2-173;
+            }
+            else if(y > h/2-155 && y < h/2-137)
+            {
+                yr = h/2-155;
+            }
+            else if(y > h/2-137 && y < h/2-119)
+            {
+                yr = h/2-137;
+            }
+            else if(y > h/2-119 && y < h/2-101)
+            {
+                yr = h/2-119;
+            }
+            else if(y > h/2-101 && y < h/2-83)
+            {
+                yr = h/2-101;
+            }
+            else if(y > h/2-83 && y < h/2-65)
+            {
+                yr = h/2-83;
+            }
+            else if(y > h/2-65 && y < h/2-47)
+            {
+                yr = h/2-65;
+            }
+            else if(y > h/2-47 && y < h/2-29)
+            {
+                yr = h/2-47;
+            }
+            else if(y > h/2-29 && y < h/2-11)
+            {
+                yr = h/2-29;
+            }
+            else if(y > h/2-11 && y < h/2+7)
+            {
+                yr = h/2-11;
+            }
+            else if(y > h/2+7 && y < h/2+25)
+            {
+                yr = h/2+7;
+            }
+            else if(y > h/2+25 && y < h/2+43)
+            {
+                yr = h/2+25;
+            }
+            else if(y > h/2+43 && y < h/2+61)
+            {
+                yr = h/2+43;
+            }
+            else if(y > h/2+61 && y < h/2+79)
+            {
+                yr = h/2+61;
+            }
+            else if(y > h/2+79 && y < h/2+97)
+            {
+                yr = h/2+79;
+            }
+            else if(y > h/2+97 && y < h/2+115)
+            {
+                yr = h/2+97;
+            }
+            else if(y > h/2+115 && y < h/2+133)
+            {
+                yr = h/2+115;
+            }
+            else if(y > h/2+133 && y < h/2+151)
+            {
+                yr = h/2+133;
+            }
+            else if(y > h/2+151 && y < h/2+169)
+            {
+                yr = h/2+151;
+            }
+            else if(y > h/2+169 && y < h/2+187)
+            {
+                yr = h/2+169;
+            }
+            else if(y > h/2+187 && y < h/2+205)
+            {
+                yr = h/2+187;
+            }
+            else if(y > h/2+205 && y < h/2+223)
+            {
+                yr = h/2+205;
+            }
+            else if(y > h/2+223 && y < h/2+241)
+            {
+                yr = h/2+223;
+            }
+            //g.fillRect(427, 63, 50, 15);
+        }
+        g.setColor(Color.red);
+        g.fillRect(xr, yr, 50, 15);
+
     }
 
     public void armyTime(Graphics g)
@@ -217,4 +327,10 @@ public class Screen extends Applet implements ActionListener,MouseListener
         g.drawString("10", w/2-260, h/2+223);
         g.drawString("11", w/2-260, h/2+241);
     }
+
+    public void square(Graphics g, int x)
+    {
+
+    }
+
 }
