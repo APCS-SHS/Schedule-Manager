@@ -14,6 +14,8 @@ public class ScreenCopy extends Applet implements ActionListener,MouseListener
     private int y=0;
     private int xr=0;
     private int yr=0;
+    private Choice colorChoice;
+    private Color color;
 
     public void init()
     {
@@ -27,6 +29,14 @@ public class ScreenCopy extends Applet implements ActionListener,MouseListener
         day = "";
         x = 0;
         addMouseListener(this);
+        
+        //choice
+        colorChoice = new Choice();
+        colorChoice.add("Choose Priority");
+        colorChoice.add("High Priority");
+        colorChoice.add("Medium Priority");
+        colorChoice.add("Low Priority");
+        add(colorChoice);
     }
 
     public void mouseExited(MouseEvent me)
@@ -110,14 +120,14 @@ public class ScreenCopy extends Applet implements ActionListener,MouseListener
         {
             if(x > w/2-240 && x < w/2-172) //sunday
             {
-                g.setColor(Color.red);
+                g.setColor(ColorLibKhavkhalyuk.RNDCOLORak());
                 g.drawLine(w/2-240, h/2-190, w/2-172, h/2-190);
                 g.drawLine(w/2-172, h/2-208, w/2-172, h/2+250);
                 xr = w/2-233;
             }
             else if(x > w/2-172 && x< w/2-110) //monday
             {
-                g.setColor(Color.red);
+                g.setColor(ColorLibKhavkhalyuk.RNDCOLORak());
                 g.drawLine(w/2-172, h/2-190, w/2-110, h/2-190);
                 g.drawLine(w/2-172, h/2-208, w/2-172, h/2+250);
                 g.drawLine(w/2-110, h/2-208, w/2-110, h/2+250);
@@ -125,7 +135,7 @@ public class ScreenCopy extends Applet implements ActionListener,MouseListener
             }
             else if(x > w/2-110 && x < w/2-47) //tuesday
             {
-                g.setColor(Color.red);
+                g.setColor(ColorLibKhavkhalyuk.RNDCOLORak());
                 g.drawLine(w/2-110, h/2-190, w/2-47, h/2-190);
                 g.drawLine(w/2-110, h/2-208, w/2-110, h/2+250);
                 g.drawLine(w/2-47, h/2-208, w/2-47, h/2+250);
@@ -133,7 +143,7 @@ public class ScreenCopy extends Applet implements ActionListener,MouseListener
             }
             else if(x > w/2-47 && x < w/2+37) //wednesday
             {
-                g.setColor(Color.red);
+                g.setColor(ColorLibKhavkhalyuk.RNDCOLORak());
                 g.drawLine(w/2-47, h/2-190, w/2+37, h/2-190);
                 g.drawLine(w/2-47, h/2-208, w/2-47, h/2+250);
                 g.drawLine(w/2+37, h/2-208, w/2+37, h/2+250);
@@ -141,7 +151,7 @@ public class ScreenCopy extends Applet implements ActionListener,MouseListener
             }
             else if(x > w/2+37 && x < w/2+108) //thursday
             {
-                g.setColor(Color.red);
+                g.setColor(ColorLibKhavkhalyuk.RNDCOLORak());
                 g.drawLine(w/2+37, h/2-190, w/2+108, h/2-190);
                 g.drawLine(w/2+37, h/2-208, w/2+37, h/2+250);
                 g.drawLine(w/2+108, h/2-208, w/2+108, h/2+250);
@@ -149,7 +159,7 @@ public class ScreenCopy extends Applet implements ActionListener,MouseListener
             }
             else if(x > w/2+108 && x < w/2+160) //friday
             {
-                g.setColor(Color.red);
+                g.setColor(ColorLibKhavkhalyuk.RNDCOLORak());
                 g.drawLine(w/2+108, h/2-190, w/2+160, h/2-190);
                 g.drawLine(w/2+108, h/2-208, w/2+108, h/2+250);
                 g.drawLine(w/2+160, h/2-208, w/2+160, h/2+250);
@@ -157,12 +167,14 @@ public class ScreenCopy extends Applet implements ActionListener,MouseListener
             }
             else if(x > w/2+160 && x < w/2+240) //saturday
             {
-                g.setColor(Color.red);
+                g.setColor(ColorLibKhavkhalyuk.RNDCOLORak());
                 g.drawLine(w/2+160, h/2-190, w/2+240, h/2-190);
                 g.drawLine(w/2+160, h/2-208, w/2+160, h/2+250);
                 xr = w/2+177;
             }
         }
+
+        
 
         //square
         if(x > w/2-285 && x < w/2-250)
@@ -245,23 +257,38 @@ public class ScreenCopy extends Applet implements ActionListener,MouseListener
             }
             else if(y > h/2+169 && y < h/2+187)
             {
-                yr = h/2+169;
+                yr = h/2+174;
             }
             else if(y > h/2+187 && y < h/2+205)
             {
-                yr = h/2+187;
+                yr = h/2+193;
             }
             else if(y > h/2+205 && y < h/2+223)
             {
-                yr = h/2+205;
+                yr = h/2+211;
             }
             else if(y > h/2+223 && y < h/2+241)
             {
-                yr = h/2+223;
+                yr = h/2+230;
             }
             //g.fillRect(427, 63, 50, 15);
         }
-        g.setColor(Color.red);
+        
+        //priority boxes
+        String colorch=colorChoice.getSelectedItem();
+        if(colorch.equals("Choose Priority")){
+            color=Color.white;
+        }
+        else if(colorch.equals("High Priority")){
+            color=Color.RED;
+        }
+        else if(colorch.equals("Medium Priority")){
+            color=ColorLibKhavkhalyuk.DARKGREENak();
+        }
+        else if(colorch.equals("Low Priority")){
+            color=Color.CYAN;
+        }
+        g.setColor(color);
         g.fillRect(xr, yr, 50, 15);
 
     }
