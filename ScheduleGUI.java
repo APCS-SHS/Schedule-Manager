@@ -7,26 +7,28 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import java.awt.BorderLayout;
+import java.awt.event.ActionListener;
 
+import java.awt.event.ActionEvent;
 /**
  * Write a description of class ScheduleGUI here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class ScheduleGUI extends JFrame
+public class ScheduleGUI extends JFrame implements ActionListener
 {
     private MySchedule schedule;
     private JButton newTask,newEvent,confirm;
     private static JMenuBar menuBar;
     private JTextField teName,teStart;//te= event/task
     private JPanel teButtons,tForm,eForm;
-    private TaskEventListener teListener=new TaskEventListener();
+    
+    //private TaskEventListener teListener=new TaskEventListener();
     
     public ScheduleGUI(String name){
         super(name);
     }
-    
     public static void run(){
         ScheduleGUI frame=new ScheduleGUI("Schdule Manager");
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);//Exit when quit;
@@ -42,9 +44,9 @@ public class ScheduleGUI extends JFrame
         menuBar=new JMenuBar();//Create JMenuBar MenuBar
         JMenu teNew=new JMenu("New");// Create Menu "New"
         JMenuItem nEvent=new JMenuItem("New Event");
-        nEvent.addActionListener(teListener);
+        nEvent.addActionListener(this);
         JMenuItem nTask=new JMenuItem("New Task");
-        nTask.addActionListener(teListener);
+        nTask.addActionListener(this);
         teNew.add(nTask);
         teNew.add(nEvent);
         menuBar.add(teNew);
@@ -53,24 +55,43 @@ public class ScheduleGUI extends JFrame
     private void createNewTaskEventButtons(){
         newTask=new JButton("New Task");
         newTask.setToolTipText("Create a new task.");
-        newTask.addActionListener(teListener);
+        newTask.addActionListener(this);
         newEvent=new JButton("New Event");
         newEvent.setToolTipText("Create a new event.");
-        newEvent.addActionListener(teListener);
+        newEvent.addActionListener(this);
         teButtons=new JPanel();
         teButtons.add(newTask);//Add newTask to teButtons
         teButtons.add(newEvent);//Add newEvent to teButtons
-        getContentPane().add(teButtons,BorderLayout.PAGE_END);//Add teButtons
+        changeVisibility(0);
         
     }
-    public static void newTaskEvent(int taskEvent){
-        if(taskEvent==0){
-            
-            
+    
+    private void changeVisibility(int visibility){
+        if (visibility==0){
+            getContentPane().removeAll();
+            getContentPane().add(teButtons,BorderLayout.PAGE_END);//Add teButtons
         }
-        if(taskEvent==1){
-            
+        if(visibility>0){
+            getContentPane().remove(teButtons);
         }
+        if(visibility==1){
+            //getContentPane().add(TaskForm);
+        }
+        if(visibility==2){
+            //getContentPane().add(EventForm);
+        }
+        repaint();
+    }
+    
+    public void actionPerformed(ActionEvent ae){
+        
+        if(ae.getActionCommand().equals("New Task")){
+            changeVisibility(1);
+        }
+        if(ae.getActionCommand().equals("New Event")){
+            changeVisibility(2);
+        }
+        
     }
     
     
