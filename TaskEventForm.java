@@ -11,6 +11,13 @@ import javax.swing.JTextField;
  */
 public class TaskEventForm
 {
+    private JTextField nameField;
+    private JTextArea descriptionField;
+    private JButton confirmTE,cancelTE;
+    private 
+    public TaskEventForm(){
+        
+    }
     public JPanel getTeForm(int te){
         if(te==1){
             return tForm(); 
@@ -21,6 +28,7 @@ public class TaskEventForm
         else
             return null;
     }
+    
     public JPanel tForm(){
         //We need:
         //Task name
@@ -29,7 +37,7 @@ public class TaskEventForm
         //Repeats -- How Often (will use repeatForm);
         //Task Priority.
         //Task Description.
-
+        
     }
     public JPanel eForm(){
         //we need:
