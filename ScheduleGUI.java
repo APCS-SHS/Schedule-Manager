@@ -8,8 +8,9 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
-
 import java.awt.event.ActionEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.event.DocumentEvent;
 /**
  * Write a description of class ScheduleGUI here.
  * 
@@ -23,9 +24,13 @@ public class ScheduleGUI extends JFrame implements ActionListener
     private static JMenuBar menuBar;
     private JTextField teName,teStart;//te= event/task
     private JPanel teButtons,tForm,eForm;
-    
+    private int taskEventStatus=0;
     //private TaskEventListener teListener=new TaskEventListener();
-    
+    private Task task;
+    private Event event;
+    private JTextField nameField;
+    private JTextArea descriptionField;
+    private JButton confirmTE,cancelTE,repeating;
     public ScheduleGUI(String name){
         super(name);
     }
@@ -82,17 +87,32 @@ public class ScheduleGUI extends JFrame implements ActionListener
         }
         repaint();
     }
-    
+    private void tForm(){
+        nameField=new JTextField("Name");
+        nameField.addActionListener(this);
+    }
+    private void eForm(){}
     public void actionPerformed(ActionEvent ae){
         
         if(ae.getActionCommand().equals("New Task")){
-            changeVisibility(1);
+            taskEventStatus=1;
+            changeVisibility(taskEventStatus);
         }
         if(ae.getActionCommand().equals("New Event")){
-            changeVisibility(2);
+            taskEventStatus=2;
+            changeVisibility(taskEventStatus);
         }
         
+        if(ae.getActionCommand().equals("Confirm")){
+            if(taskEventStatus==1){
+                
+                //MySchedule.addTask(task);
+            }
+            
+        }
     }
+    
+    
     
     
     
