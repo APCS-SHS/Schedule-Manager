@@ -12,8 +12,8 @@ public class ScreenCopy extends Applet implements ActionListener,MouseListener
     private String day;
     private int x=0;
     private int y=0;
-    private int xr=0;
-    private int yr=0;
+    private int xr=427;
+    private int yr=63;
     private Choice colorChoice;
     private Color color;
 
@@ -29,7 +29,7 @@ public class ScreenCopy extends Applet implements ActionListener,MouseListener
         day = "";
         x = 0;
         addMouseListener(this);
-        
+
         //choice
         colorChoice = new Choice();
         colorChoice.add("Choose Priority");
@@ -71,6 +71,11 @@ public class ScreenCopy extends Applet implements ActionListener,MouseListener
             selection = 2;
         repaint();
     }
+
+    //     public void update(Graphics g)
+    //     {
+    //         paint(g);
+    //     }
 
     public void paint(Graphics g)
     {
@@ -174,7 +179,6 @@ public class ScreenCopy extends Applet implements ActionListener,MouseListener
             }
         }
 
-        
 
         //square
         if(x > w/2-285 && x < w/2-250)
@@ -271,9 +275,8 @@ public class ScreenCopy extends Applet implements ActionListener,MouseListener
             {
                 yr = h/2+230;
             }
-            //g.fillRect(427, 63, 50, 15);
         }
-        
+
         //priority boxes
         String colorch=colorChoice.getSelectedItem();
         if(colorch.equals("Choose Priority")){
