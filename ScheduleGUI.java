@@ -23,7 +23,7 @@ public class ScheduleGUI extends JFrame implements ActionListener
     private JButton newTask,newEvent,confirm;
     private static JMenuBar menuBar;
     private JTextField teName,teStart;//te= event/task
-    private JPanel teButtons,tForm,eForm;
+    private JPanel teButtons,tPanel,ePanel;
     private int taskEventStatus=0;
     //private TaskEventListener teListener=new TaskEventListener();
     private Task task;
@@ -37,6 +37,7 @@ public class ScheduleGUI extends JFrame implements ActionListener
     public static void run(){
         ScheduleGUI frame=new ScheduleGUI("Schdule Manager");
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);//Exit when quit;
+        frame.setupCal();
         frame.initMenuBar();//Create Menu Bar
         frame.setJMenuBar(menuBar);//Add Menu Bar
         frame.createNewTaskEventButtons();//Create and Add Buttons
@@ -44,6 +45,9 @@ public class ScheduleGUI extends JFrame implements ActionListener
         //Display the GUI
         frame.pack();
         frame.setVisible(true);
+    }
+    private void setupCal(){
+        schedule=new MySchedule();
     }
     private void initMenuBar(){
         menuBar=new JMenuBar();//Create JMenuBar MenuBar
@@ -72,26 +76,27 @@ public class ScheduleGUI extends JFrame implements ActionListener
     }
     
     private void changeVisibility(int visibility){
+        getContentPane().removeAll();
         if (visibility==0){
-            getContentPane().removeAll();
             getContentPane().add(teButtons,BorderLayout.PAGE_END);//Add teButtons
         }
-        if(visibility>0){
-            getContentPane().remove(teButtons);
-        }
         if(visibility==1){
-            //getContentPane().add(TaskForm);
+            getContentPane().add(tPanel);
         }
         if(visibility==2){
-            //getContentPane().add(EventForm);
+            getContentPane().add(ePanel);
         }
         repaint();
     }
     private void tForm(){
         nameField=new JTextField("Name");
         nameField.addActionListener(this);
+        //calDue= 
+        tPanel=new JPanel();
+        tPanel.add(nameField);
     }
-    private void eForm(){}
+    private void eForm(){
+    }
     public void actionPerformed(ActionEvent ae){
         
         if(ae.getActionCommand().equals("New Task")){
@@ -108,7 +113,11 @@ public class ScheduleGUI extends JFrame implements ActionListener
                 
                 //MySchedule.addTask(task);
             }
-            
+            if(taskEventStatus==2){
+                
+            }
+            taskEventStatus=0;
+            changeVisibility(taskEventStatus);
         }
     }
     
@@ -117,3 +126,6 @@ public class ScheduleGUI extends JFrame implements ActionListener
     
     
 }
+//  https://docs.oracle.com/javase/7/docs/api/javax/swing/SpinnerDateModel.html
+//  http://docs.oracle.com/javase/tutorial/uiswing/components/spinner.html
+//  https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html

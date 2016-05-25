@@ -9,7 +9,7 @@ public class Task
 {
     private int day,month,year,hour;
     private String name;
-    public Task(String taskName,int priority,Schedule start,Schedule stop){
+    public Task(String taskName,int priority,Schedule schedule){
         name=taskName;
     }
 }

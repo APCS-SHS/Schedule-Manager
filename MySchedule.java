@@ -19,7 +19,7 @@ public class MySchedule
         cal=cal.getInstance();
         
     }
-    public Date getDate(){
+    public Date getNow(){
         return cal.getTime();
     }
     public void addTask(Task t){
