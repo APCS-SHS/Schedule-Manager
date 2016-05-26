@@ -82,7 +82,7 @@ public class Screen extends Applet implements ActionListener,MouseListener
         g.drawString("Sunday", w/2-225, h/2-200);
         g.setColor(Color.orange);
         g.drawString("Monday", w/2-165, h/2-200);
-        g.setColor(Color.yellow);
+        g.setColor(ColorLibKhavkhalyuk.DARKYELLOWak());
         g.drawString("Tuesday", w/2-105, h/2-200);
         g.setColor(Color.green);
         g.drawString("Wednesday", w/2-40, h/2-200);
@@ -108,48 +108,48 @@ public class Screen extends Applet implements ActionListener,MouseListener
         {
             if(x > w/2-240 && x < w/2-172) //sunday
             {
-                g.setColor(Color.red);
+                g.setColor(ColorLibKhavkhalyuk.RNDCOLORak());
                 g.drawLine(w/2-240, h/2-190, w/2-172, h/2-190);
                 g.drawLine(w/2-172, h/2-208, w/2-172, h/2+250);
             }
             else if(x > w/2-172 && x< w/2-110) //monday
             {
-                g.setColor(Color.red);
+                g.setColor(ColorLibKhavkhalyuk.RNDCOLORak());
                 g.drawLine(w/2-172, h/2-190, w/2-110, h/2-190);
                 g.drawLine(w/2-172, h/2-208, w/2-172, h/2+250);
                 g.drawLine(w/2-110, h/2-208, w/2-110, h/2+250);
             }
             else if(x > w/2-110 && x < w/2-47) //tuesday
             {
-                g.setColor(Color.red);
+                g.setColor(ColorLibKhavkhalyuk.RNDCOLORak());
                 g.drawLine(w/2-110, h/2-190, w/2-47, h/2-190);
                 g.drawLine(w/2-110, h/2-208, w/2-110, h/2+250);
                 g.drawLine(w/2-47, h/2-208, w/2-47, h/2+250);
             }
             else if(x > w/2-47 && x < w/2+37) //wednesday
             {
-                g.setColor(Color.red);
+                g.setColor(ColorLibKhavkhalyuk.RNDCOLORak());
                 g.drawLine(w/2-47, h/2-190, w/2+37, h/2-190);
                 g.drawLine(w/2-47, h/2-208, w/2-47, h/2+250);
                 g.drawLine(w/2+37, h/2-208, w/2+37, h/2+250);
             }
             else if(x > w/2+37 && x < w/2+108) //thursday
             {
-                g.setColor(Color.red);
+                g.setColor(ColorLibKhavkhalyuk.RNDCOLORak());
                 g.drawLine(w/2+37, h/2-190, w/2+108, h/2-190);
                 g.drawLine(w/2+37, h/2-208, w/2+37, h/2+250);
                 g.drawLine(w/2+108, h/2-208, w/2+108, h/2+250);
             }
             else if(x > w/2+108 && x < w/2+160) //friday
             {
-                g.setColor(Color.red);
+                g.setColor(ColorLibKhavkhalyuk.RNDCOLORak());
                 g.drawLine(w/2+108, h/2-190, w/2+160, h/2-190);
                 g.drawLine(w/2+108, h/2-208, w/2+108, h/2+250);
                 g.drawLine(w/2+160, h/2-208, w/2+160, h/2+250);
             }
             else if(x > w/2+160 && x < w/2+240) //saturday
             {
-                g.setColor(Color.red);
+                g.setColor(ColorLibKhavkhalyuk.RNDCOLORak());
                 g.drawLine(w/2+160, h/2-190, w/2+240, h/2-190);
                 g.drawLine(w/2+160, h/2-208, w/2+160, h/2+250);
             }

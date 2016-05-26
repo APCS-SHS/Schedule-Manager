@@ -7,7 +7,7 @@ public class ColorLibKhavkhalyuk
         return new Color(160,82,45);
     }
     public static Color PURPLEak(){
-        return new Color(84,27,105);
+        return new Color(153,0,153);
     }
     public static Color PINKak(){
         return new Color(255,15,201);
@@ -17,6 +17,9 @@ public class ColorLibKhavkhalyuk
     }
     public static Color DARKGREENak(){
         return new Color(11,71,36);
+    }
+    public static Color DARKYELLOWak(){
+        return new Color(204,204,0);
     }
     public static Color GRAYak(){
         return new Color(153,153,153);
