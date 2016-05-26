@@ -357,10 +357,4 @@ public class ScreenCopy extends Applet implements ActionListener,MouseListener
         g.drawString("10", w/2-260, h/2+223);
         g.drawString("11", w/2-260, h/2+241);
     }
-
-    public void square(Graphics g, int x)
-    {
-
-    }
-
 }
