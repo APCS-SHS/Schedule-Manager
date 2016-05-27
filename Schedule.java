@@ -24,6 +24,10 @@ public class Schedule
         startCal=start;
         endCal=stop;
     }
+    public Schedule(int year,int month,int date){
+        endCal=endCal.getInstance();
+        endCal.set(year,month,date);
+    }
     public Schedule(int year,int month,int date,int hour,int min){
         endCal=endCal.getInstance();
         endCal.set(year,month,date,hour,min,0);

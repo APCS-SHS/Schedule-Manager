@@ -15,8 +15,8 @@ import java.awt.BorderLayout;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.event.DocumentListener;
-import javax.swing.event.DocumentEvent;
+//import javax.swing.event.DocumentListener;
+//import javax.swing.event.DocumentEvent;
 
 /**
  * Write a description of class ScheduleGUI here.
@@ -32,7 +32,7 @@ public class ScheduleGUI extends JFrame implements ActionListener
     private JTextField teName,teStart;//te= event/task
     private JPanel teButtons,tNamePanel,eNamePanel;
     private int taskEventStatus=0;
-    
+    private String name="";
     //private TaskEventListener teListener=new TaskEventListener();
     private Container tContainer,eContainer;
     private Task task;
@@ -49,20 +49,21 @@ public class ScheduleGUI extends JFrame implements ActionListener
         ScheduleGUI frame=new ScheduleGUI("Schdule Manager");
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);//Exit when quit
         frame.setupCal();
-        frame.tForm();//Create the Task Form
-        frame.eForm();//Create the Event Form
+
         frame.initMenuBar();//Create Menu Bar
         frame.setJMenuBar(menuBar);//Add Menu Bar
         frame.createNewTaskEventButtons();//Create and Add New Task Buttons
-
+        frame.tForm();//Create the Task Form
+        frame.eForm();//Create the Event Form
         //Display the GUI
-        frame.pack();
+        
         try{
             Dimension d=Toolkit.getDefaultToolkit().getScreenSize(); // Get screen dimensions
-            frame.setSize(((int)(d.getWidth()/4)),((int)(d.getHeight()/4)));//Set size to 1/4 screen dimensions
+            frame.setPreferredSize(new Dimension(((int)(d.getWidth()/4)),((int)(d.getHeight()/4))));//Set size to 1/4 screen dimensions
         }
         catch (Exception e){//getScreenSize() will throw an exception if headless.
         }
+        frame.pack();
         frame.setVisible(true);
     }
 
@@ -101,55 +102,72 @@ public class ScheduleGUI extends JFrame implements ActionListener
         getContentPane().removeAll();
 
         if (visibility==0){
+            
             getContentPane().add(teButtons,BorderLayout.PAGE_END);//Add teButtons
         }
-        if(visibility==1){
-            getContentPane().add(tNamePanel);
-            repaint();
+        else if(visibility==1){
+            getContentPane().add(tNamePanel,BorderLayout.NORTH);
         }
-        if(visibility==2){
-            //getContentPane().add();
+        else if(visibility==2){
+            
+            getContentPane().add(eNamePanel,BorderLayout.NORTH);
         }
-        repaint();
+        
+        System.out.println(tNamePanel);
     }
-
+    
     private void tForm(){
-        nameField=new JTextField();
+        nameField=new JTextField(20);
         nameField.addActionListener(this);
         JLabel nameLabel=new JLabel("Name of Task:");
         tNamePanel=new JPanel();
         tNamePanel.add(nameLabel);
         tNamePanel.add(nameField);
-
+        tNamePanel.validate();
     }
 
     private void eForm(){
+        nameField=new JTextField(20);
+        nameField.addActionListener(this);
+        JLabel nameLabel=new JLabel("Name of Event:");
+        eNamePanel=new JPanel();
+        eNamePanel.add(nameLabel);
+        eNamePanel.add(nameField);
     }
 
     public void actionPerformed(ActionEvent ae){
         
             if(ae.getActionCommand().equals("New Task")){
+                
                 taskEventStatus=1;
                 changeVisibility(taskEventStatus);
             }
-            if(ae.getActionCommand().equals("New Event")){
+            else if(ae.getActionCommand().equals("New Event")){
                 taskEventStatus=2;
                 changeVisibility(taskEventStatus);
             }
-            
-        
-        if(ae.getActionCommand().equals("Confirm")){
+        else if(ae.getActionCommand().equals("Confirm")){
             if(taskEventStatus==1){
-
-                //MySchedule.addTask(task);
+                //MySchedule.addTask(new Task(name,priority,new Schedule(int year, int month, int day, int hour, int min,int sec)));
             }
             if(taskEventStatus==2){
-
+                //MySchedule.addEvent(new Event(name,new Schedule(int year, int month, int day)));
             }
             taskEventStatus=0;
             changeVisibility(taskEventStatus);
             
         }
+        else{
+            name=ae.getActionCommand();
+            System.out.println(ae.getSource());
+            System.out.println(tNamePanel);
+            System.out.println(ae.getSource().equals(tNamePanel));
+            
+            //System.out.println(name);
+            //System.out.println(ae.getSource());
+        }
+        
+        repaint();
     }
 
     
