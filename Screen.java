@@ -12,6 +12,8 @@ public class Screen extends Applet implements ActionListener,MouseListener
     private String day;
     private int x=0;
     private int y=0;
+    private Choice colorChoice;
+    private Color color;
 
     public void init()
     {
@@ -25,6 +27,14 @@ public class Screen extends Applet implements ActionListener,MouseListener
         day = "";
         x = 0;
         addMouseListener(this);
+        
+        //choice
+        colorChoice = new Choice();
+        colorChoice.add("Choose Priority");
+        colorChoice.add("High Priority");
+        colorChoice.add("Medium Priority");
+        colorChoice.add("Low Priority");
+        add(colorChoice);
     }
 
     public void mouseExited(MouseEvent me)
@@ -41,13 +51,14 @@ public class Screen extends Applet implements ActionListener,MouseListener
 
     public void mousePressed(MouseEvent me)
     {
+        x=me.getX();
+        y=me.getY();
+        repaint();
     }
 
     public void mouseClicked(MouseEvent me)
     {
-        x=me.getX();
-        y=me.getY();
-        repaint();
+
     }
 
     public void actionPerformed(ActionEvent ae)
@@ -64,15 +75,17 @@ public class Screen extends Applet implements ActionListener,MouseListener
     {
         int w=getWidth();
         int h=getHeight();
+        
+        //setup
+        setBackground(Color.white);
 
+        
         //buttons
         if(selection == 1)
             armyTime(g);
         else if(selection == 2)
             ampm(g);
 
-        //setup
-        setBackground(Color.white);
 
         g.setColor(Color.black);
         g.drawString("Schedule Manager", w/2-45, h/2-230);
@@ -102,6 +115,24 @@ public class Screen extends Applet implements ActionListener,MouseListener
         g.drawLine(w/2+37, h/2-208, w/2+37, h/2+250);
         g.drawLine(w/2+108, h/2-208, w/2+108, h/2+250);
         g.drawLine(w/2+160, h/2-208, w/2+160, h/2+250);
+        
+        //priority boxes
+        String colorch=colorChoice.getSelectedItem();
+        if(colorch.equals("Choose Priority")){
+            color=Color.white;
+        }
+        else if(colorch.equals("High Priority")){
+            color=Color.RED;
+        }
+        else if(colorch.equals("Medium Priority")){
+            color=ColorLibKhavkhalyuk.DARKGREENak();
+        }
+        else if(colorch.equals("Low Priority")){
+            color=Color.CYAN;
+        }
+        g.setColor(color);
+        if(y<h/2+208 && y>h/2-170)
+            g.fillRect(x,y,50,15);
 
         //day of the week
         if(y > h/2-208 && y < h/2-190)
@@ -216,5 +247,9 @@ public class Screen extends Applet implements ActionListener,MouseListener
         g.drawString("9", w/2-253, h/2+205);
         g.drawString("10", w/2-260, h/2+223);
         g.drawString("11", w/2-260, h/2+241);
+    }
+    
+        public void update(Graphics g){
+        paint(g);
     }
 }
